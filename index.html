@@ -1,14 +1,432 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Shiqing Liao</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shiqing Liao | Academic Homepage</title>
+  <meta name="description" content="Academic homepage of Shiqing Liao: research interests, publications, training, and contact information." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: Helvetica, Arial, sans-serif; padding: 2rem; }
+    :root {
+      --bg: #f4f2ec;
+      --paper: #fffefb;
+      --ink: #1a2321;
+      --muted: #485553;
+      --brand: #0e5e57;
+      --brand-dark: #083b36;
+      --accent: #ead8b1;
+      --line: #d7dbd6;
+      --shadow: 0 12px 28px rgba(13, 23, 20, 0.08);
+      --radius: 16px;
+      --maxw: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 4%, #e4f1ed 0%, transparent 30%),
+        radial-gradient(circle at 92% 0%, #efe7d7 0%, transparent 25%),
+        var(--bg);
+      font-family: "Sora", "Segoe UI", sans-serif;
+      line-height: 1.65;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--brand-dark);
+      text-underline-offset: 0.15em;
+      text-decoration-thickness: 0.08em;
+    }
+
+    a:hover {
+      color: var(--brand);
+    }
+
+    .container {
+      width: min(100% - 2rem, var(--maxw));
+      margin-inline: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+      background: rgba(244, 242, 236, 0.9);
+    }
+
+    .nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding-block: 0.35rem;
+    }
+
+    .mark {
+      text-decoration: none;
+      color: var(--ink);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .menu {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .menu a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      padding: 0.38rem 0.58rem;
+      border-radius: 9px;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .menu a:hover {
+      color: var(--brand-dark);
+      background: #e4ece9;
+    }
+
+    main {
+      padding-block: 2rem 3rem;
+    }
+
+    .hero {
+      background: linear-gradient(138deg, #fffefb 0%, #eef7f4 100%);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+      padding: clamp(1.25rem, 4vw, 2.4rem);
+      animation: reveal 0.75s ease both;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      line-height: 1.12;
+      letter-spacing: 0.015em;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 2.8vw, 2rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      margin-top: 0.4rem;
+      color: var(--muted);
+      font-size: clamp(0.98rem, 2.2vw, 1.12rem);
+      max-width: 72ch;
+    }
+
+    .badge-row {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #b8c8c4;
+      border-radius: 999px;
+      padding: 0.24rem 0.62rem;
+      font-size: 0.88rem;
+      color: #2f413e;
+      background: #f5fbfa;
+    }
+
+    .cta-row {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .btn {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 0.62rem 0.95rem;
+      border: 1px solid var(--line);
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--brand-dark);
+      border-color: var(--brand-dark);
+      color: #ffffff;
+    }
+
+    .btn.primary:hover {
+      background: var(--brand);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 15px rgba(8, 59, 54, 0.3);
+    }
+
+    .btn.ghost {
+      background: var(--paper);
+      color: var(--brand-dark);
+    }
+
+    .btn.ghost:hover {
+      background: #edf4f2;
+      transform: translateY(-1px);
+    }
+
+    section.card {
+      margin-top: 1rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1rem, 2.6vw, 1.35rem);
+      animation: reveal 0.75s ease both;
+      animation-delay: 0.05s;
+    }
+
+    p {
+      margin: 0.45rem 0 0;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    ul,
+    ol {
+      margin: 0.55rem 0 0;
+      padding-left: 1.15rem;
+    }
+
+    li {
+      margin-bottom: 0.52rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .publication li {
+      line-height: 1.5;
+    }
+
+    .pub-meta {
+      display: inline-block;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .highlight {
+      background: linear-gradient(180deg, transparent 70%, var(--accent) 70%);
+      padding-inline: 0.08em;
+    }
+
+    footer {
+      margin-top: 1.4rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+      padding-bottom: 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .two-col {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      html,
+      body {
+        scroll-behavior: auto;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Hello World</h1>
-  <p>I’m hosted with GitHub Pages!</p>
+  <header>
+    <div class="container nav">
+      <a class="mark" href="#top">Shiqing Liao</a>
+      <nav class="menu" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#training">Training</a>
+        <a href="#honors">Honors</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="top">
+    <section class="hero" aria-labelledby="name-title">
+      <h1 id="name-title">Shiqing Liao</h1>
+      <p class="subtitle">
+        PhD Candidate in Translational Biomedicine at Cedars-Sinai Medical Center.
+        I combine single-cell spatial multiomics and computational modeling to
+        study treatment response and resistance in triple-negative breast cancer.
+      </p>
+      <div class="badge-row" aria-label="Research areas">
+        <span class="badge">Spatial Multiomics</span>
+        <span class="badge">Tumor Microenvironment</span>
+        <span class="badge">Cancer Immunology</span>
+        <span class="badge">Computational Biology</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn primary" href="01-biosketch_ShiqingLiao.pdf">Download Biosketch (PDF)</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/shiqing-liao-46a043142" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn ghost" href="https://www.researchgate.net/profile/Shiqing-Liao" target="_blank" rel="noreferrer">ResearchGate</a>
+      </div>
+    </section>
+
+    <section class="card" id="about">
+      <h2>About</h2>
+      <p>
+        My training centers on extracting biological insight from complex imaging
+        and spatial molecular data. During my undergraduate research at UCLA in
+        Dr. Hong Zhou's lab, I applied cryo-electron tomography to characterize
+        microbial and viral architecture in near-native states and contributed to
+        scalable computational workflows for automated particle picking.
+      </p>
+      <p>
+        At Cedars-Sinai in Dr. Simon Knott's lab, I develop interpretable spatial
+        analysis strategies to quantify how tumor, immune, and stromal cells are
+        organized at diagnosis and remodeled after neoadjuvant therapy, with and
+        without anti-PD-1 immunotherapy. My long-term goal is to become a
+        <span class="highlight">hybrid wet-lab and computational scientist</span>
+        who bridges mechanism and translational impact in breast cancer research.
+      </p>
+    </section>
+
+    <section class="card" id="research">
+      <h2>Research Focus</h2>
+      <ul>
+        <li>Build interpretable predictors of neoadjuvant therapy response in triple-negative breast cancer using single-cell spatial transcriptomics.</li>
+        <li>Characterize tumor-immune boundaries, stromal architecture, and spatial neighborhoods associated with pathologic complete response or high-risk residual disease.</li>
+        <li>Prioritize resistance mechanisms in the tumor microenvironment for cross-modality and functional validation in tractable systems.</li>
+        <li>Integrate computational spatial analysis with wet-lab immunology and murine model training to accelerate biomarker and target discovery.</li>
+      </ul>
+    </section>
+
+    <section class="card publication" id="publications">
+      <h2>Selected Publications</h2>
+      <ol>
+        <li>
+          Wang H, Liao S, et al. TomoNet: A streamlined cryoET software pipeline with automatic particle picking on flexible lattices. <em>Biological Imaging</em>, 2024.
+          <span class="pub-meta">PMID: 38464049</span>
+        </li>
+        <li>
+          Wang H, Zhang J, Liao S, Gunsalus R, Zhou ZH. Composition and in situ structure of the <em>Methanospirillum hungatei</em> cell envelope and surface layer. <em>Science Advances</em>, 2024.
+          <span class="pub-meta">PMID: 39671499</span>
+        </li>
+        <li>
+          Zhen J, Chen J, Huang, Liao S, et al. Structures of Epstein-Barr virus and Kaposi's sarcoma-associated herpesvirus virions reveal species-specific tegument and envelope features. <em>Journal of Virology</em>, 2024.
+          <span class="pub-meta">PMID: 39026862</span>
+        </li>
+        <li>
+          Wang H, Zhang J, Toso D, Liao S, et al. Hierarchical organization and assembly of the archaeal cell sheath from an amyloid-like protein. <em>Nature Communications</em>, 2023.
+          <span class="pub-meta">PMID: 37872154</span>
+        </li>
+        <li>
+          Zhang J, Wang H, Imhof S, Zhou X, Liao S, et al. Structure of the trypanosome paraflagellar rod and insights into non-planar motility of eukaryotic cells. <em>Cell Discovery</em>, 2021.
+          <span class="pub-meta">PMID: 34257277</span>
+        </li>
+        <li>
+          Toriola AT, Yang Y, Liao S, et al. Breast tissue changes following RANKL inhibition with denosumab in healthy premenopausal women with dense breasts. <em>Science Translational Medicine</em> (under review).
+        </li>
+      </ol>
+    </section>
+
+    <div class="two-col">
+      <section class="card" id="training">
+        <h2>Education and Training</h2>
+        <ul>
+          <li><strong>PhD, Translational Biomedicine</strong>, Cedars-Sinai Medical Center (09/2023-06/2029 expected)</li>
+          <li><strong>BS, Microbiology, Immunology, and Molecular Genetics</strong>, University of California, Los Angeles (09/2018-03/2022)</li>
+        </ul>
+        <p class="muted">eRA Commons user name: LIAOSHIQING</p>
+      </section>
+
+      <section class="card" id="positions">
+        <h2>Academic Positions</h2>
+        <ul>
+          <li>2023-Present: PhD Candidate, Biomedicine Department, Cedars-Sinai Medical Center</li>
+          <li>2022-2023: Research Assistant, California NanoSystems Institute, UCLA</li>
+          <li>2019-2022: Undergraduate Researcher, California NanoSystems Institute, UCLA</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="card" id="honors">
+      <h2>Honors and Fellowships</h2>
+      <ul>
+        <li>2021: Undergraduate Research Scholars Program Fellowship, UCLA</li>
+        <li>2021: Dean's Award for Life Science Research (Summer), UCLA</li>
+        <li>2020: Undergraduate Research Fellowship Program, UCLA</li>
+      </ul>
+    </section>
+
+    <section class="card" id="contact">
+      <h2>Contact and Profiles</h2>
+      <p>
+        For collaborations and research inquiries, connect via professional profiles:
+      </p>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/shiqing-liao-46a043142" target="_blank" rel="noreferrer">LinkedIn profile</a></li>
+        <li><a href="https://www.researchgate.net/profile/Shiqing-Liao" target="_blank" rel="noreferrer">ResearchGate profile</a></li>
+      </ul>
+      <p class="muted">Tip: Add your preferred academic email here for direct contact.</p>
+    </section>
+
+    <footer>
+      Last updated March 2026. Built with GitHub Pages.
+    </footer>
+  </main>
 </body>
 </html>
